@@ -6,13 +6,9 @@ var infile = "index.html";
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-    fs.readFile(infile, function(err, data) {
-	if (err) throw err;
-	else {
-	    var buffer = new buffer(data);
-	    response.send(buffer.toString("utf-8", 0 , 12));
-	}
-    });
+    var data = fs.readFileSync('index.html');
+    var buffer = new Buffer(data);
+    response.send(buffer.toString());
 });
 
 var port = process.env.PORT || 5000;
