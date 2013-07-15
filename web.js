@@ -6,7 +6,7 @@ var infile = "index.html";
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-    var buffer = new buffer(fs.readFile());
+    var buffer = new buffer(fs.readFile(infile));
     response.send(buffer.toString("utf-8", 0, 12));
 };
 
